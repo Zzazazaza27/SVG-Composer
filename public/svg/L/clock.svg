@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 170" fill="none">
+  <g class="colorable" data-name="clock" data-type="main">
+    <path d="M80 150 L60 155 L80 160 L100 155Z" fill="#2D2D2D"/>
+    <path d="M78 145 L78 150 L82 152 L82 147Z" fill="#555"/>
+    <ellipse cx="80" cy="80" rx="60" ry="55" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <ellipse cx="80" cy="80" rx="50" ry="45" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="1.5"/>
+    <line x1="80" y1="80" x2="80" y2="48" stroke="#2D2D2D" stroke-width="3" stroke-linecap="round"/>
+    <line x1="80" y1="80" x2="105" y2="70" stroke="#2D2D2D" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="80" y1="80" x2="60" y2="95" stroke="#FF6B8A" stroke-width="1" stroke-linecap="round"/>
+    <circle cx="80" cy="80" r="3" fill="#2D2D2D"/>
+    <circle cx="80" cy="40" r="2" fill="#2D2D2D"/>
+    <circle cx="80" cy="120" r="2" fill="#2D2D2D"/>
+    <circle cx="35" cy="80" r="2" fill="#2D2D2D"/>
+    <circle cx="125" cy="80" r="2" fill="#2D2D2D"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 150" fill="none">
+  <g class="colorable" data-name="camera" data-type="main">
+    <path d="M25 115 L90 80 L165 115 L100 145Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M90 80 L165 115 L165 55 L90 25Z" class="fill-secondary" fill="#A78BC5" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M25 115 L90 80 L90 25 L25 55Z" class="fill-accent" fill="#D6C8EE" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M60 30 L75 23 L85 28 L70 35Z" fill="#555" stroke="#2D2D2D" stroke-width="1"/>
+    <ellipse cx="70" cy="65" rx="22" ry="18" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="2"/>
+    <ellipse cx="70" cy="65" rx="14" ry="11" fill="#555" stroke="#2D2D2D" stroke-width="1.5"/>
+    <ellipse cx="70" cy="65" rx="6" ry="5" fill="#333"/>
+    <circle cx="45" cy="45" r="4" class="fill-highlight" fill="#FF6B8A"/>
+    <rect x="140" y="40" width="15" height="8" rx="2" fill="#555" stroke="#2D2D2D" stroke-width="1"/>
+  </g>
+</svg>

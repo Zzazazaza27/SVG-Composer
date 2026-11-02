@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180" fill="none">
+  <g class="colorable" data-name="phone" data-type="main">
+    <path d="M30 140 L70 120 L110 140 L70 160Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M70 120 L110 140 L110 30 L70 10Z" class="fill-secondary" fill="#A78BC5" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M30 140 L70 120 L70 10 L30 30Z" class="fill-accent" fill="#D6C8EE" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M38 130 L65 115 L65 22 L38 37Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="1"/>
+    <path d="M65 115 L65 22 L103 37 L103 130Z" fill="#DDD5F0" stroke="#2D2D2D" stroke-width="1"/>
+    <circle cx="70" cy="18" r="2" fill="#555"/>
+    <path d="M60 148 L70 142 L80 148 L70 152Z" fill="#555"/>
+  </g>
+</svg>

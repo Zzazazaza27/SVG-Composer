@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="SVG Illustration Composer — конструктор иллюстрационных композиций из векторных SVG компонентов"/>
+  <title>SVG Composer — Конструктор иллюстраций</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/src/css/index.css"/>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header" class="header">
+      <div class="header__left">
+        <div class="logo" id="logo">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#logo-grad)"/>
+            <path d="M7 14 L14 8 L21 14 L14 20Z" fill="white" opacity="0.9"/>
+            <path d="M10 14 L14 10 L18 14 L14 18Z" fill="white" opacity="0.5"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="28" y2="28">
+                <stop offset="0%" stop-color="#7C4DFF"/>
+                <stop offset="100%" stop-color="#E040FB"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo__text">SVG Composer</span>
+        </div>
+      </div>
+
+      <div class="header__center">
+        <!-- Palette selector -->
+        <div class="palette-selector" id="palette-selector">
+          <span class="palette-selector__label">Палитра:</span>
+          <div class="palette-chips">
+            <button class="palette-chip active" data-palette="violet" id="palette-violet" title="Фиолетовая">
+              <span style="background:#C4B0E0"></span>
+              <span style="background:#A78BC5"></span>
+              <span style="background:#D6C8EE"></span>
+            </button>
+            <button class="palette-chip" data-palette="warm" id="palette-warm" title="Бежево-оранжевая">
+              <span style="background:#F0DFA0"></span>
+              <span style="background:#E5C88A"></span>
+              <span style="background:#F5E8B0"></span>
+            </button>
+            <button class="palette-chip" data-palette="cool" id="palette-cool" title="Сине-голубая">
+              <span style="background:#A0C4E8"></span>
+              <span style="background:#7BA8D4"></span>
+              <span style="background:#C0D8F0"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Size toggle -->
+        <div class="size-toggle" id="size-toggle">
+          <button class="size-btn active" data-size="L" id="size-L">L</button>
+          <button class="size-btn" data-size="S" id="size-S">S</button>
+        </div>
+      </div>
+
+      <div class="header__right">
+        <button class="btn btn--ghost" id="btn-auto" title="Автоматическая сборка">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 1L11.5 6.5L17 9L11.5 11.5L9 17L6.5 11.5L1 9L6.5 6.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>Авто</span>
+        </button>
+        <button class="btn btn--primary" id="btn-export" title="Экспортировать SVG">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 12V15H15V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 3V11M9 11L6 8M9 11L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Экспорт SVG</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main id="main" class="main">
+      <!-- Left Panel: Library -->
+      <aside id="library-panel" class="panel panel--left">
+        <div class="panel__header">
+          <h2 class="panel__title">Библиотека</h2>
+          <div class="panel__tabs">
+            <button class="tab active" data-tab="main" id="tab-main">Главные</button>
+            <button class="tab" data-tab="background" id="tab-bg">Фоновые</button>
+          </div>
+        </div>
+        <div class="panel__search">
+          <input type="text" id="search-input" class="search-input" placeholder="Поиск компонентов…"/>
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 10L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="library-grid" id="library-grid">
+          <!-- Filled dynamically -->
+        </div>
+      </aside>
+
+      <!-- Canvas -->
+      <section id="canvas-section" class="canvas-section">
+        <div class="canvas-toolbar" id="canvas-toolbar">
+          <div class="toolbar-group">
+            <button class="tool-btn" id="tool-select" title="Выделение (V)" data-tool="select">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 3L8 15L10 10L15 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="tool-btn" id="tool-move" title="Перемещение (M)" data-tool="move">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 2V16M2 9H16M9 2L6 5M9 2L12 5M9 16L6 13M9 16L12 13M2 9L5 6M2 9L5 12M16 9L13 6M16 9L13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="toolbar-divider"></div>
+          <div class="toolbar-group">
+            <button class="tool-btn" id="tool-duplicate" title="Дублировать (Ctrl+D)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="1" y="4" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                <rect x="5" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </button>
+            <button class="tool-btn" id="tool-delete" title="Удалить (Delete)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 5H15M6 5V3H12V5M7 8V13M11 8V13M5 5L6 16H12L13 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="toolbar-divider"></div>
+          <div class="toolbar-group">
+            <button class="tool-btn" id="tool-layer-up" title="На слой вверх">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 14V4M9 4L5 8M9 4L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="tool-btn" id="tool-layer-down" title="На слой вниз">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 4V14M9 14L5 10M9 14L13 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="toolbar-divider"></div>
+          <div class="toolbar-group">
+            <button class="tool-btn" id="tool-rotate-left" title="Повернуть влево">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M4 8A5 5 0 1 1 5 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4 4V8H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="tool-btn" id="tool-rotate-right" title="Повернуть вправо">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M14 8A5 5 0 1 0 13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M14 4V8H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="toolbar-spacer"></div>
+          <div class="toolbar-group">
+            <button class="tool-btn" id="tool-zoom-in" title="Приблизить">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 8H10M8 6V10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <span class="zoom-level" id="zoom-level">100%</span>
+            <button class="tool-btn" id="tool-zoom-out" title="Отдалить">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M6 8H10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="tool-btn" id="tool-fit" title="По размеру">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2 6V2H6M12 2H16V6M16 12V16H12M6 16H2V12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper" id="canvas-wrapper">
+          <div class="canvas-container" id="canvas-container">
+            <svg id="main-canvas" class="main-canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+              <defs>
+                <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="#FAFBFC"/>
+              <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+            </svg>
+            <!-- Drop hint overlay -->
+            <div class="drop-hint" id="drop-hint">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 8V40M8 24H40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <p>Перетащите элементы из библиотеки</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Format selector -->
+        <div class="format-bar" id="format-bar">
+          <span class="format-bar__label">Формат:</span>
+          <button class="format-btn active" data-w="1200" data-h="630" id="fmt-landscape">1200×630</button>
+          <button class="format-btn" data-w="800" data-h="800" id="fmt-square">800×800</button>
+          <button class="format-btn" data-w="630" data-h="1200" id="fmt-portrait">630×1200</button>
+        </div>
+      </section>
+
+      <!-- Right Panel: Properties + Layers -->
+      <aside id="props-panel" class="panel panel--right">
+        <div class="panel__header">
+          <div class="panel__tabs">
+            <button class="tab active" data-tab="properties" id="tab-props">Свойства</button>
+            <button class="tab" data-tab="layers" id="tab-layers">Слои</button>
+          </div>
+        </div>
+
+        <!-- Properties content -->
+        <div class="panel__content" id="properties-content">
+          <div class="props-empty" id="props-empty">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.3">
+              <rect x="5" y="5" width="30" height="30" rx="4" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M15 20H25M20 15V25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Выберите объект на холсте</p>
+          </div>
+          <div class="props-form hidden" id="props-form">
+            <div class="prop-group">
+              <label class="prop-label">Позиция</label>
+              <div class="prop-row">
+                <div class="prop-field">
+                  <span class="prop-field__label">X</span>
+                  <input type="number" id="prop-x" class="prop-input" value="0"/>
+                </div>
+                <div class="prop-field">
+                  <span class="prop-field__label">Y</span>
+                  <input type="number" id="prop-y" class="prop-input" value="0"/>
+                </div>
+              </div>
+            </div>
+            <div class="prop-group">
+              <label class="prop-label">Размер</label>
+              <div class="prop-row">
+                <div class="prop-field">
+                  <span class="prop-field__label">W</span>
+                  <input type="number" id="prop-w" class="prop-input" value="100"/>
+                </div>
+                <div class="prop-field">
+                  <span class="prop-field__label">H</span>
+                  <input type="number" id="prop-h" class="prop-input" value="100"/>
+                </div>
+              </div>
+            </div>
+            <div class="prop-group">
+              <label class="prop-label">Поворот</label>
+              <div class="prop-row">
+                <input type="range" id="prop-rotation" class="prop-range" min="0" max="360" value="0"/>
+                <span class="prop-value" id="prop-rotation-value">0°</span>
+              </div>
+            </div>
+            <div class="prop-group">
+              <label class="prop-label">Масштаб</label>
+              <div class="prop-row">
+                <input type="range" id="prop-scale" class="prop-range" min="10" max="300" value="100"/>
+                <span class="prop-value" id="prop-scale-value">100%</span>
+              </div>
+            </div>
+            <div class="prop-group">
+              <label class="prop-label">Прозрачность</label>
+              <div class="prop-row">
+                <input type="range" id="prop-opacity" class="prop-range" min="0" max="100" value="100"/>
+                <span class="prop-value" id="prop-opacity-value">100%</span>
+              </div>
+            </div>
+            <div class="prop-group">
+              <label class="prop-label">Тип</label>
+              <div class="prop-row">
+                <button class="type-btn active" data-obj-type="main" id="type-main">Главный</button>
+                <button class="type-btn" data-obj-type="background" id="type-bg">Фоновый</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layers content -->
+        <div class="panel__content hidden" id="layers-content">
+          <div class="layers-list" id="layers-list">
+            <!-- Filled dynamically -->
+          </div>
+          <div class="layers-empty" id="layers-empty">
+            <p>Холст пуст</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Auto-compose modal -->
+    <div class="modal-overlay hidden" id="auto-modal">
+      <div class="modal" id="auto-modal-content">
+        <div class="modal__header">
+          <h3>Автоматическая сборка</h3>
+          <button class="modal__close" id="auto-modal-close">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M4 4L14 14M14 4L4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="auto-mode-tabs">
+            <button class="auto-tab active" data-mode="metaphor" id="auto-tab-metaphor">По метафоре</button>
+            <button class="auto-tab" data-mode="select" id="auto-tab-select">Выбрать вручную</button>
+          </div>
+
+          <!-- Metaphor mode -->
+          <div class="auto-section" id="auto-metaphor-section">
+            <label class="auto-label">Введите метафору или заголовок:</label>
+            <input type="text" id="auto-metaphor-input" class="auto-input" placeholder="Например: удалённая работа, технологии, обучение…"/>
+            <div class="auto-suggestions" id="auto-suggestions">
+              <span class="suggestion" data-kw="технологии">💻 Технологии</span>
+              <span class="suggestion" data-kw="работа">💼 Работа</span>
+              <span class="suggestion" data-kw="обучение">📚 Обучение</span>
+              <span class="suggestion" data-kw="коммуникация">✉️ Коммуникация</span>
+              <span class="suggestion" data-kw="креативность">🎨 Креативность</span>
+              <span class="suggestion" data-kw="аналитика">📊 Аналитика</span>
+              <span class="suggestion" data-kw="развлечения">🎮 Развлечения</span>
+            </div>
+          </div>
+
+          <!-- Manual select mode -->
+          <div class="auto-section hidden" id="auto-select-section">
+            <label class="auto-label">Выберите компоненты:</label>
+            <div class="auto-grid" id="auto-grid">
+              <!-- Filled dynamically -->
+            </div>
+          </div>
+
+          <div class="auto-options">
+            <label class="auto-label">Количество объектов:</label>
+            <input type="range" id="auto-count" class="prop-range" min="3" max="10" value="5"/>
+            <span class="prop-value" id="auto-count-value">5</span>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost" id="auto-cancel">Отмена</button>
+          <button class="btn btn--primary" id="auto-compose">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 1L11.5 6.5L17 9L11.5 11.5L9 17L6.5 11.5L1 9L6.5 6.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Собрать композицию
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="toast-container" id="toast-container"></div>
+  </div>
+
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+</html>

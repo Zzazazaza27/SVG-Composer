@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" fill="none">
+  <g class="colorable" data-name="book" data-type="main">
+    <path d="M20 110 L90 80 L160 110 L90 135Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M90 80 L160 110 L160 75 L90 50Z" class="fill-secondary" fill="#A78BC5" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M20 110 L90 80 L90 50 L20 75Z" class="fill-accent" fill="#D6C8EE" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M20 75 L90 50 L160 75 L90 97Z" class="fill-accent" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="1.5"/>
+    <path d="M90 50 L90 97" stroke="#2D2D2D" stroke-width="1.5"/>
+    <line x1="40" y1="72" x2="80" y2="58" stroke="#A78BC5" stroke-width="2"/>
+    <line x1="40" y1="78" x2="70" y2="67" stroke="#A78BC5" stroke-width="1.5"/>
+    <path d="M18 110 L18 75 L22 75 L22 110Z" fill="#2D2D2D"/>
+    <path d="M158 110 L158 75 L162 75 L162 110Z" fill="#2D2D2D"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" fill="none">
+  <g class="colorable" data-name="cloud" data-type="background">
+    <path d="M40 110 Q10 110 10 85 Q10 65 35 60 Q35 35 65 30 Q95 25 110 45 Q125 30 150 35 Q175 40 175 65 Q195 70 195 90 Q195 110 170 110Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M85 65 L85 90 L75 80 M85 90 L95 80" stroke="#2D2D2D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M115 90 L115 65 L105 75 M115 65 L125 75" stroke="#2D2D2D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

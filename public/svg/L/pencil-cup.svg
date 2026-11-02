@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 180" fill="none">
+  <g class="colorable" data-name="pencil-cup" data-type="main">
+    <path d="M20 140 L60 120 L100 140 L60 160Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M60 120 L100 140 L100 70 L60 50Z" class="fill-secondary" fill="#A78BC5" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M20 140 L60 120 L60 50 L20 70Z" class="fill-accent" fill="#D6C8EE" stroke="#2D2D2D" stroke-width="2"/>
+    <line x1="40" y1="45" x2="35" y2="10" stroke="#FF6B8A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="55" y1="40" x2="50" y2="5" stroke="#FFB74D" stroke-width="3" stroke-linecap="round"/>
+    <line x1="70" y1="45" x2="72" y2="15" stroke="#4FC3F7" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="35,10 33,3 37,3" fill="#2D2D2D"/>
+    <polygon points="50,5 48,0 52,0" fill="#2D2D2D"/>
+    <polygon points="72,15 70,8 74,8" fill="#2D2D2D"/>
+    <line x1="80" y1="48" x2="85" y2="20" stroke="#2D2D2D" stroke-width="2"/>
+    <path d="M83,20 L87,20 L85,12Z" fill="#FFD54F"/>
+  </g>
+</svg>

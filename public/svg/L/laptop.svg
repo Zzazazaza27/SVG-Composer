@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <g class="colorable" data-name="laptop" data-type="main">
+    <!-- Base/keyboard -->
+    <path d="M100 140 L20 100 L100 60 L180 100 Z" class="fill-primary" fill="#C4B0E0" stroke="#2D2D2D" stroke-width="2"/>
+    <!-- Screen back -->
+    <path d="M100 60 L180 100 L180 40 L100 0 Z" class="fill-secondary" fill="#A78BC5" stroke="#2D2D2D" stroke-width="2"/>
+    <!-- Screen front -->
+    <path d="M100 60 L20 100 L20 40 L100 0 Z" class="fill-accent" fill="#D6C8EE" stroke="#2D2D2D" stroke-width="2"/>
+    <!-- Screen display -->
+    <path d="M95 10 L30 45 L30 90 L95 55 Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="1.5"/>
+    <!-- Keyboard keys row 1 -->
+    <path d="M60 85 L50 90 L55 92 L65 87 Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="0.5"/>
+    <path d="M75 78 L65 83 L70 85 L80 80 Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="0.5"/>
+    <path d="M90 71 L80 76 L85 78 L95 73 Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="0.5"/>
+    <!-- Trackpad -->
+    <path d="M110 90 L90 100 L100 105 L120 95 Z" fill="#E8E0F5" stroke="#2D2D2D" stroke-width="1"/>
+    <!-- Power indicator -->
+    <circle cx="170" cy="45" r="3" class="fill-highlight" fill="#FF6B8A"/>
+  </g>
+</svg>
